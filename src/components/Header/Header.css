@@ -1,10 +1,21 @@
 .header {
   border-bottom: 3px solid var(--newspaper-black);
   background-color: var(--newspaper-white);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.header-visible {
+  transform: translateY(0);
+}
+
+.header-hidden {
+  transform: translateY(-100%);
 }
 
 .header-content {

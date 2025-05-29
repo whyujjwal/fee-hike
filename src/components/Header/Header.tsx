@@ -1,14 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
 
 const Header: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Only hide/show header after scrolling past 100px
+      if (currentScrollY > 100) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          setIsVisible(false);
+        } else {
+          // Scrolling up
+          setIsVisible(true);
+        }
+      } else {
+        // Always show header at the top
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="header">
+    <header className={`header ${isVisible ? 'header-visible' : 'header-hidden'}`}>
       <div className="container">
         <div className="header-content">
           <div className="publication-info">
-            <h1 className="publication-name">The Education Investigation</h1>
-            <p className="publication-tagline">Independent • Data-Driven • For the People</p>
+            <h1 className="publication-name">Fee Hike Investigation</h1>
+            <p className="publication-tagline">Education is NOT Lite • Data-Driven Truth • For Every Family</p>
           </div>
           <div className="header-meta">
             <time className="publication-date">

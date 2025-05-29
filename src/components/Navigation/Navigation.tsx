@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './Navigation.css';
 
 const Navigation: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
-  const sections = [
+  const sections = useMemo(() => [
     { id: 'hero', label: 'The Story' },
     { id: 'data', label: 'The Data' },
     { id: 'impact', label: 'The Impact' },
-    { id: 'game', label: 'Play the Game' }
-  ];
+    { id: 'game', label: 'Affordability Game' },
+    { id: 'time-machine', label: 'Time Machine' }
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {

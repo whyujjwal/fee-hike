@@ -42,10 +42,6 @@ const Footer: React.FC = () => {
                 ✉️ fee-hike@proton.me
               </a>
             </div>
-            
-            <div className="social-links">
-              <a href="#twitter" className="social-link twitter">Twitter</a>
-            </div>
           </div>
 
           <div className="footer-section">
@@ -73,7 +69,7 @@ const Footer: React.FC = () => {
         <div className="footer-bottom">
           <div className="copyright">
             <p>
-              © {currentYear} The Education Investigation. 
+              © {currentYear} Fee Hike Investigation. 
               Made with ❤️ for educational transparency in India.
             </p>
           </div>
