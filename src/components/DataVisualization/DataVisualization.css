@@ -1,0 +1,307 @@
+.data-section {
+  background-color: var(--newspaper-white);
+  border-top: 1px solid var(--newspaper-gray);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: 3rem;
+  color: var(--newspaper-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--newspaper-gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.chart-controls {
+  margin-bottom: var(--spacing-xl);
+}
+
+.chart-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.chart-tab {
+  background: none;
+  border: 2px solid var(--newspaper-gray);
+  color: var(--newspaper-gray);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.chart-tab:hover {
+  border-color: var(--accent-maroon);
+  color: var(--accent-maroon);
+}
+
+.chart-tab.active {
+  background-color: var(--accent-maroon);
+  border-color: var(--accent-maroon);
+  color: var(--newspaper-white);
+}
+
+.chart-container {
+  background-color: var(--newspaper-white);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.chart-wrapper {
+  width: 100%;
+}
+
+.chart-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--newspaper-black);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.chart-annotations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--newspaper-light-gray);
+}
+
+.milestone {
+  background-color: var(--newspaper-light-gray);
+  padding: var(--spacing-sm);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-maroon);
+}
+
+.milestone-year {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent-maroon);
+  display: block;
+}
+
+.milestone-event {
+  font-weight: 600;
+  color: var(--newspaper-black);
+  display: block;
+  margin: var(--spacing-xs) 0;
+}
+
+.milestone-increase {
+  font-size: 0.9rem;
+  color: var(--warning-red);
+  font-weight: 700;
+}
+
+.affordability-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--newspaper-light-gray);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.custom-tooltip {
+  background-color: var(--newspaper-white);
+  border: 1px solid var(--newspaper-gray);
+  border-radius: 8px;
+  padding: var(--spacing-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip-label {
+  font-weight: 700;
+  color: var(--newspaper-black);
+  margin-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--newspaper-light-gray);
+  padding-bottom: var(--spacing-xs);
+}
+
+.interactive-simulation {
+  background: linear-gradient(135deg, var(--newspaper-light-gray) 0%, #f8f9fa 100%);
+  border-radius: 12px;
+  padding: var(--spacing-xl);
+  border: 1px solid var(--newspaper-gray);
+}
+
+.simulation-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.simulation-header h3 {
+  font-size: 2rem;
+  color: var(--newspaper-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+.simulation-header p {
+  color: var(--newspaper-gray);
+  font-size: 1.1rem;
+}
+
+.income-slider {
+  margin-bottom: var(--spacing-xl);
+}
+
+.income-slider label {
+  display: block;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--newspaper-black);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--newspaper-light-gray);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-maroon);
+  cursor: pointer;
+  border: 2px solid var(--newspaper-white);
+  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-maroon);
+  cursor: pointer;
+  border: 2px solid var(--newspaper-white);
+  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
+}
+
+.affordability-results {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.year-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.year-card {
+  background-color: var(--newspaper-white);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.year-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--newspaper-black);
+  margin-bottom: var(--spacing-md);
+}
+
+.affordability-bar {
+  width: 100%;
+  height: 40px;
+  background-color: var(--newspaper-light-gray);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+}
+
+.affordability-fill {
+  height: 100%;
+  border-radius: 20px;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.affordability-percentage {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--newspaper-black);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .chart-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chart-tab {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .chart-container {
+    padding: var(--spacing-md);
+  }
+  
+  .chart-annotations {
+    grid-template-columns: 1fr;
+  }
+  
+  .affordability-legend {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .year-comparison {
+    grid-template-columns: 1fr;
+  }
+  
+  .interactive-simulation {
+    padding: var(--spacing-md);
+  }
+} 

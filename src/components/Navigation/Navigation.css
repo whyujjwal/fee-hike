@@ -1,0 +1,113 @@
+.navigation {
+  background-color: var(--newspaper-light-gray);
+  border-bottom: 1px solid var(--newspaper-gray);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+}
+
+.investigation-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.breaking-badge {
+  background-color: var(--warning-red);
+  color: var(--newspaper-white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.investigation-title h2 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--newspaper-black);
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--spacing-md);
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--newspaper-gray);
+  cursor: pointer;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover {
+  color: var(--accent-maroon);
+  background-color: rgba(139, 21, 56, 0.1);
+}
+
+.nav-link.active {
+  color: var(--accent-maroon);
+  background-color: rgba(139, 21, 56, 0.15);
+  font-weight: 700;
+}
+
+/* Progress indicator */
+.navigation::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-maroon) 0%, var(--accent-orange) 100%);
+  transition: width 0.3s ease;
+  width: calc(var(--scroll-progress, 0) * 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .investigation-title {
+    text-align: center;
+  }
+  
+  .investigation-title h2 {
+    font-size: 1.1rem;
+  }
+  
+  .nav-links {
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    font-size: 0.8rem;
+    padding: var(--spacing-xs);
+  }
+} 
