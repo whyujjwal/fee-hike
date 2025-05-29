@@ -172,7 +172,6 @@ const TimeMachineGame: React.FC = () => {
           <div className="current-status">
             <div className="status-header">
               <h3 className="status-year">{currentYear}</h3>
-              <div className="status-era">{currentData.era}</div>
             </div>
             
             <div className="status-grid">
@@ -205,10 +204,6 @@ const TimeMachineGame: React.FC = () => {
                   {getAffordabilityLabel(adjustedPercentage)}
                 </div>
               </div>
-            </div>
-
-            <div className="key-event">
-              <strong>Key Event:</strong> {currentData.keyEvent}
             </div>
           </div>
 

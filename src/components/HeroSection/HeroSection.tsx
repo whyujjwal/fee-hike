@@ -101,15 +101,6 @@ const HeroSection: React.FC = () => {
                     <strong>Reality Check:</strong> Not lite at all for middle-class families
                   </div>
                 </div>
-
-                <div className="quote-box">
-                  <blockquote>
-                    "We thought we had it sorted when our son cleared BITSAT. 
-                    The reality hit hard — this BT is way beyond what any 
-                    middle-class family can take lite."
-                  </blockquote>
-                  <cite>— Parent from Maharashtra</cite>
-                </div>
               </div>
             </div>
           </div>
