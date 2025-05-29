@@ -651,6 +651,14 @@
   opacity: 0.8;
 }
 
+.results-note {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: var(--spacing-xs);
+}
+
 .result-story {
   padding: var(--spacing-lg);
   text-align: center;

@@ -109,8 +109,8 @@ const StorytellingSection: React.FC = () => {
                 <span className="stat-desc">of Indian families cannot afford current BITS fees</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">₹21.4L</span>
-                <span className="stat-desc">average student loan required for 4-year degree</span>
+                <span className="stat-number">₹21.4L - ₹27L</span>
+                <span className="stat-desc">average student loan required (4-year: ₹21.4L, 5-year: ₹27L)</span>
               </div>
               <div className="stat-item">
                 <span className="stat-number">8-12 years</span>

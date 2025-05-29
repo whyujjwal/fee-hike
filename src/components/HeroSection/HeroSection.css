@@ -245,8 +245,8 @@
 
 .stat-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-md);
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
 }
 

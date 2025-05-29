@@ -89,8 +89,12 @@ const HeroSection: React.FC = () => {
                       <span className="stat-label">Families Need Loans</span>
                     </div>
                     <div className="stat-item">
-                      <span className="stat-number">₹12L+</span>
-                      <span className="stat-label">Total 4-Year Cost</span>
+                      <span className="stat-number">₹24.48L</span>
+                      <span className="stat-label">4-Year Program Cost</span>
+                    </div>
+                    <div className="stat-item">
+                      <span className="stat-number">₹30.6L</span>
+                      <span className="stat-label">5-Year Program Cost</span>
                     </div>
                   </div>
                   <div className="crisis-note">

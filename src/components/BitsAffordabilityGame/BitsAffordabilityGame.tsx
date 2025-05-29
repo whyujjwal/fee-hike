@@ -396,6 +396,9 @@ const BitsAffordabilityGame: React.FC = () => {
               <div className="instruction-item">
                 <strong>📅 Payment Schedule:</strong> Fees due twice yearly (January & July) - no taking it lite here!
               </div>
+              <div className="instruction-item">
+                <strong>⏰ Program Duration:</strong> This simulates a 4-year program. For 5-year programs, expect ~25% higher total costs (₹30.6L vs ₹24.48L)
+              </div>
             </div>
           </div>
 
@@ -582,7 +585,8 @@ const BitsAffordabilityGame: React.FC = () => {
               <div className="results-content newspaper-style">
                 <div className="results-header">
                   <h2 className="final-headline">The Final Verdict</h2>
-                  <div className="results-date">After 4 Years at BITS Pilani</div>
+                  <div className="results-date">After 4 Years at BITS Pilani (4-Year Program)</div>
+                  <div className="results-note">Note: For 5-Year programs, add ~25% more costs</div>
                 </div>
                 
                 <div className="result-story">
