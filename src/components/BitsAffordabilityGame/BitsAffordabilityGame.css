@@ -19,6 +19,8 @@
     linear-gradient(90deg, transparent 24px, rgba(0,0,0,0.05) 25px, rgba(0,0,0,0.05) 26px, transparent 27px);
   background-size: 50px 50px;
   opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Newspaper Header */
@@ -103,6 +105,7 @@
 .income-options {
   display: grid;
   gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
 }
 
 .income-option {
@@ -152,6 +155,104 @@
   transition: all 0.3s ease;
 }
 
+/* Fee Configuration */
+.fee-configuration {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.config-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--accent-maroon);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: var(--spacing-xs);
+}
+
+.config-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.config-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.config-item label {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--newspaper-black);
+}
+
+.config-input {
+  padding: var(--spacing-sm);
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.config-input:focus {
+  outline: none;
+  border-color: var(--accent-maroon);
+}
+
+.config-hint {
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+  font-style: italic;
+}
+
+.fee-preview {
+  background: #f9f9f9;
+  padding: var(--spacing-md);
+  border: 1px solid #ddd;
+}
+
+.fee-preview h5 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--newspaper-black);
+}
+
+.fee-breakdown {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.year-fee {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: var(--spacing-xs);
+  background: white;
+  border-left: 3px solid var(--accent-maroon);
+}
+
+.year-fee span:first-child {
+  font-weight: 600;
+  color: var(--newspaper-black);
+}
+
+.year-fee span:last-child {
+  color: var(--accent-maroon);
+  font-weight: 600;
+}
+
 /* Newspaper Box */
 .newspaper-box {
   background: white;
@@ -191,6 +292,8 @@
   text-align: center;
   padding: var(--spacing-xl) 0;
   border-top: 2px solid #ddd;
+  position: relative;
+  z-index: 20;
 }
 
 .newspaper-cta-btn {
@@ -208,6 +311,10 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   margin-bottom: var(--spacing-md);
   opacity: 1 !important;
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10;
+  display: inline-block;
 }
 
 .newspaper-cta-btn:hover {
@@ -637,6 +744,10 @@
     column-rule: none;
   }
   
+  .config-options {
+    grid-template-columns: 1fr;
+  }
+  
   .game-headline {
     font-size: 2rem;
   }
@@ -670,4 +781,146 @@
     border-right: none;
     border-bottom: 1px solid #ddd;
   }
+}
+
+/* Financial Breakdown */
+.financial-breakdown {
+  margin-bottom: var(--spacing-xl);
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.breakdown-item {
+  background: #fafafa;
+  border: 2px solid #e0e0e0;
+  padding: var(--spacing-md);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.breakdown-item.income {
+  border-color: #4caf50;
+  background: #f1f8e9;
+}
+
+.breakdown-item.expenses {
+  border-color: #f44336;
+  background: #ffebee;
+}
+
+.breakdown-item.net {
+  border-color: #2196f3;
+  background: #e3f2fd;
+}
+
+.breakdown-item.tuition-due {
+  border-color: #ff9800;
+  background: #fff3e0;
+  animation: pulse-orange 2s ease-in-out infinite;
+}
+
+.breakdown-item.su-due {
+  border-color: #673ab7;
+  background: #f3e5f5;
+}
+
+.breakdown-item.total-due {
+  border-color: #e91e63;
+  background: #fce4ec;
+  animation: pulse-pink 2s ease-in-out infinite;
+}
+
+.breakdown-item.interest {
+  border-color: #9c27b0;
+  background: #f3e5f5;
+}
+
+@keyframes pulse-orange {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes pulse-pink {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.4); }
+  50% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(233, 30, 99, 0); }
+}
+
+.breakdown-label {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--newspaper-black);
+}
+
+.breakdown-value {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.breakdown-value.positive {
+  color: #4caf50;
+}
+
+.breakdown-value.negative {
+  color: #f44336;
+}
+
+.breakdown-value.tuition {
+  color: #ff9800;
+  font-size: 1.5rem;
+}
+
+.breakdown-value.su-expenses {
+  color: #673ab7;
+  font-size: 1.2rem;
+}
+
+.breakdown-value.total-cost {
+  color: #e91e63;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+/* Affordability Meter */
+.affordability-meter {
+  background: white;
+  border: 2px solid var(--newspaper-black);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.meter-label {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--newspaper-black);
+}
+
+.meter-bar {
+  width: 100%;
+  height: 20px;
+  background: #e0e0e0;
+  border: 2px solid var(--newspaper-black);
+  margin-bottom: var(--spacing-sm);
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  transition: width 0.5s ease, background-color 0.3s ease;
+}
+
+.meter-text {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
 } 

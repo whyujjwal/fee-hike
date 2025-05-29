@@ -24,6 +24,8 @@ interface RandomEvent {
 const BitsAffordabilityGame: React.FC = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [selectedIncome, setSelectedIncome] = useState(800000);
+  const [feeIncreasePercentage, setFeeIncreasePercentage] = useState(10);
+  const [suExpenses, setSuExpenses] = useState(10000);
   const [gameState, setGameState] = useState<GameState>({
     year: 1,
     month: 1,
@@ -51,43 +53,64 @@ const BitsAffordabilityGame: React.FC = () => {
     {
       title: 'Medical Emergency',
       description: 'Family member needs urgent medical treatment',
-      cost: 150000,
+      cost: Math.floor(Math.random() * 100000) + 100000, // ₹1L to ₹2L
       type: 'emergency' as const
     },
     {
       title: 'Job Loss',
       description: 'Primary earner loses job for 6 months',
-      cost: 300000,
+      cost: Math.floor(Math.random() * 200000) + 250000, // ₹2.5L to ₹4.5L
       type: 'emergency' as const
     },
     {
       title: 'Home Repairs',
       description: 'Urgent home repairs needed',
-      cost: 80000,
+      cost: Math.floor(Math.random() * 50000) + 50000, // ₹50K to ₹1L
       type: 'emergency' as const
     },
     {
       title: 'BITS Fee Hike',
-      description: 'Unexpected 15% fee increase mid-year',
-      cost: 80000,
+      description: 'Unexpected mid-year fee increase',
+      cost: Math.floor(Math.random() * 50000) + 30000, // ₹30K to ₹80K
       type: 'inflation' as const
     },
     {
       title: 'Scholarship Opportunity',
-      description: 'Partial scholarship reduces fees by ₹1L',
-      cost: -100000,
+      description: 'Partial scholarship reduces semester fees',
+      cost: -(Math.floor(Math.random() * 50000) + 50000), // -₹50K to -₹1L
       type: 'opportunity' as const
+    },
+    {
+      title: 'Laptop Replacement',
+      description: 'Student laptop needs replacement',
+      cost: Math.floor(Math.random() * 30000) + 40000, // ₹40K to ₹70K
+      type: 'emergency' as const
+    },
+    {
+      title: 'Family Wedding',
+      description: 'Unexpected family wedding expenses',
+      cost: Math.floor(Math.random() * 80000) + 70000, // ₹70K to ₹1.5L
+      type: 'emergency' as const
     }
   ], []);
 
-  const currentYearFees = useMemo(() => ({
-    1: 535000,
-    2: 565000,
-    3: 595000,
-    4: 625000
-  }), []);
+  const currentYearFees = useMemo(() => {
+    // Calculate current semester fee based on year and fee increase
+    const getCurrentSemesterFee = (year: number) => {
+      const baseFee = 306000; // ₹3,06,000 for first year
+      const increaseMultiplier = Math.pow(1 + (feeIncreasePercentage / 100), year - 1);
+      return Math.round(baseFee * increaseMultiplier);
+    };
+    
+    const fees: { [key: number]: number } = {};
+    for (let year = 1; year <= 4; year++) {
+      fees[year] = getCurrentSemesterFee(year);
+    }
+    return fees;
+  }, [feeIncreasePercentage]);
 
   const startGame = () => {
+    console.log('Starting game with income:', selectedIncome);
     setGameState({
       year: 1,
       month: 1,
@@ -103,6 +126,7 @@ const BitsAffordabilityGame: React.FC = () => {
     setGameStarted(true);
     setCurrentEvent(null);
     setShowResults(false);
+    console.log('Game started, gameStarted set to true');
   };
 
   const nextMonth = useCallback(() => {
@@ -115,25 +139,28 @@ const BitsAffordabilityGame: React.FC = () => {
     const monthlyIncome = newState.householdIncome / 12;
     newState.totalSavings += monthlyIncome - monthlyExpenses;
 
-    // Check for random events (15% chance each month)
-    if (Math.random() < 0.15 && !currentEvent) {
+    // Check for random events (12% chance each month)
+    if (Math.random() < 0.12 && !currentEvent) {
       const event = randomEvents[Math.floor(Math.random() * randomEvents.length)];
       setCurrentEvent(event);
       return; // Don't advance time yet, wait for event resolution
     }
 
-    // Annual tuition payment (in month 6 of each year)
-    if (newState.month === 6) {
-      const yearlyFee = currentYearFees[newState.year as keyof typeof currentYearFees];
-      if (newState.totalSavings >= yearlyFee) {
-        newState.totalSavings -= yearlyFee;
-        newState.tuitionPaid += yearlyFee;
+    // Semester-based tuition payment (in months 1 and 7 of each year)
+    const isSemesterStart = newState.month === 1 || newState.month === 7;
+    if (isSemesterStart) {
+      const semesterFee = currentYearFees[newState.year as keyof typeof currentYearFees];
+      const totalSemesterCost = semesterFee + suExpenses; // Add SU expenses
+      
+      if (newState.totalSavings >= totalSemesterCost) {
+        newState.totalSavings -= totalSemesterCost;
+        newState.tuitionPaid += semesterFee;
       } else {
-        const loanAmount = yearlyFee - Math.max(0, newState.totalSavings);
+        const loanAmount = totalSemesterCost - Math.max(0, newState.totalSavings);
         newState.totalDebt += loanAmount * 1.12; // 12% interest
-        newState.totalSavings = Math.max(0, newState.totalSavings - yearlyFee);
-        newState.tuitionPaid += yearlyFee;
-        newState.stress += 20;
+        newState.totalSavings = Math.max(0, newState.totalSavings - totalSemesterCost);
+        newState.tuitionPaid += semesterFee;
+        newState.stress += 25; // Higher stress for semester-based payments
       }
     }
 
@@ -159,7 +186,7 @@ const BitsAffordabilityGame: React.FC = () => {
     }
 
     setGameState(newState);
-  }, [gameState, currentEvent, randomEvents, currentYearFees]);
+  }, [gameState, currentEvent, randomEvents, currentYearFees, suExpenses]);
 
   const handleEventChoice = (takeAction: boolean) => {
     if (!currentEvent) return;
@@ -249,6 +276,8 @@ const BitsAffordabilityGame: React.FC = () => {
     }
   };
 
+  console.log('Component render - gameStarted:', gameStarted, 'selectedIncome:', selectedIncome);
+
   if (!gameStarted) {
     return (
       <section id="game" className="game-section">
@@ -265,14 +294,15 @@ const BitsAffordabilityGame: React.FC = () => {
             <div className="game-intro-text">
               <p className="lead-paragraph">
                 <span className="dropcap">E</span>very year, thousands of middle-class Indian families 
-                face an impossible choice: sacrifice their financial stability to send their children 
+                face a serious BT: sacrifice their financial stability to send their children 
                 to premier institutions like BITS Pilani, or watch opportunities slip away.
+                This definitely isn't something you can take lite.
               </p>
               
               <p>
                 This interactive simulation puts you in the shoes of these families. Can you navigate 
                 four years of escalating fees, unexpected emergencies, and mounting pressure while 
-                keeping your family afloat?
+                keeping your family afloat? Time to see if you can get this financial BT sorted!
               </p>
             </div>
 
@@ -290,39 +320,101 @@ const BitsAffordabilityGame: React.FC = () => {
                   </div>
                 ))}
               </div>
+              
+              <div className="fee-configuration">
+                <h4 className="config-subtitle">Fee Structure Configuration</h4>
+                <div className="config-options">
+                  <div className="config-item">
+                    <label htmlFor="fee-increase">Annual Fee Increase (%)</label>
+                    <input 
+                      id="fee-increase"
+                      type="number" 
+                      value={feeIncreasePercentage} 
+                      onChange={(e) => setFeeIncreasePercentage(Number(e.target.value))}
+                      min="0" 
+                      max="25"
+                      className="config-input"
+                    />
+                    <small className="config-hint">Default: 10% (based on BITS historical data)</small>
+                  </div>
+                  
+                  <div className="config-item">
+                    <label htmlFor="su-expenses">SU Expenses per Semester (₹)</label>
+                    <input 
+                      id="su-expenses"
+                      type="number" 
+                      value={suExpenses} 
+                      onChange={(e) => setSuExpenses(Number(e.target.value))}
+                      min="0" 
+                      max="50000"
+                      step="1000"
+                      className="config-input"
+                    />
+                    <small className="config-hint">Student Union, activities, misc. fees</small>
+                  </div>
+                </div>
+                
+                <div className="fee-preview">
+                  <h5>Fee Preview (Semester-wise):</h5>
+                  <div className="fee-breakdown">
+                    {[1,2,3,4].map(year => (
+                      <div key={year} className="year-fee">
+                        <span>Year {year}:</span>
+                        <span>₹{currentYearFees[year].toLocaleString('en-IN')} + ₹{suExpenses.toLocaleString('en-IN')} SU = ₹{(currentYearFees[year] + suExpenses).toLocaleString('en-IN')}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="game-instructions newspaper-box">
-            <h3 className="box-headline">The Challenge Ahead</h3>
+            <h3 className="box-headline">The BT Challenge Ahead</h3>
             <div className="instructions-grid">
               <div className="instruction-item">
-                <strong>💰 Manage Finances:</strong> Balance monthly income against living expenses
+                <strong>💰 Manage Finances:</strong> Balance monthly income against living expenses (can't take it lite!)
               </div>
               <div className="instruction-item">
-                <strong>📚 Pay Fees:</strong> Annual tuition ranges from ₹5.35L to ₹6.25L
+                <strong>📚 Pay Fees:</strong> Semester fees start at ₹3.16L, increasing {feeIncreasePercentage}% annually (major BT!)
               </div>
               <div className="instruction-item">
-                <strong>⚡ Handle Crises:</strong> Medical emergencies, job loss, unexpected costs
+                <strong>🏫 SU Expenses:</strong> ₹{(suExpenses/1000).toFixed(0)}K additional per semester for activities (not so lite extras)
               </div>
               <div className="instruction-item">
-                <strong>💳 Consider Loans:</strong> Interest rates will compound your burden
+                <strong>⚡ Handle Crises:</strong> Medical emergencies, job loss, unexpected costs (serious BT moments)
               </div>
               <div className="instruction-item">
-                <strong>😰 Watch Stress:</strong> Too much pressure ends the game
+                <strong>💳 Consider Loans:</strong> Interest rates will compound your burden (BT gets worse)
               </div>
               <div className="instruction-item">
-                <strong>🎯 The Goal:</strong> Graduate with minimal debt and intact family wellbeing
+                <strong>😰 Watch Stress:</strong> Too much pressure ends the game (can't handle the BT)
+              </div>
+              <div className="instruction-item">
+                <strong>🎯 The Goal:</strong> Graduate with minimal debt and get this BT sorted
+              </div>
+              <div className="instruction-item">
+                <strong>📅 Payment Schedule:</strong> Fees due twice yearly (January & July) - no taking it lite here!
               </div>
             </div>
           </div>
 
           <div className="game-start-section">
-            <button className="newspaper-cta-btn" onClick={startGame}>
-              Begin Your BITS Journey
+            <button 
+              className="newspaper-cta-btn" 
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Button clicked!');
+                startGame();
+              }}
+              type="button"
+            >
+              Begin Your BITS BT Journey
             </button>
+            
             <p className="cta-disclaimer">
-              * Based on actual BITS Pilani fee structures and Indian household income data
+              * Based on actual BITS Pilani fee structures and Indian household income data. Not lite at all!
             </p>
           </div>
         </div>
@@ -373,6 +465,72 @@ const BitsAffordabilityGame: React.FC = () => {
                 style={{ color: getStressColor(gameState.stress) }}
               >
                 {gameState.stress.toFixed(0)}%
+              </div>
+            </div>
+          </div>
+
+          {/* Monthly Financial Breakdown */}
+          <div className="financial-breakdown newspaper-box">
+            <h3 className="box-headline">Monthly Financial Breakdown</h3>
+            <div className="breakdown-grid">
+              <div className="breakdown-item income">
+                <div className="breakdown-label">📊 Monthly Income</div>
+                <div className="breakdown-value positive">+₹{(gameState.householdIncome / 12).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</div>
+              </div>
+              
+              <div className="breakdown-item expenses">
+                <div className="breakdown-label">🏠 Living Expenses (60%)</div>
+                <div className="breakdown-value negative">-₹{(gameState.householdIncome * 0.6 / 12).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</div>
+              </div>
+              
+              <div className="breakdown-item net">
+                <div className="breakdown-label">💰 Net Monthly Savings</div>
+                <div className="breakdown-value positive">+₹{(gameState.householdIncome * 0.4 / 12).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</div>
+              </div>
+              
+              {(gameState.month === 1 || gameState.month === 7) && (
+                <>
+                  <div className="breakdown-item tuition-due">
+                    <div className="breakdown-label">🎓 Semester Tuition Due</div>
+                    <div className="breakdown-value tuition">₹{currentYearFees[gameState.year as keyof typeof currentYearFees].toLocaleString('en-IN')}</div>
+                  </div>
+                  
+                  <div className="breakdown-item su-due">
+                    <div className="breakdown-label">🏫 SU Expenses Due</div>
+                    <div className="breakdown-value su-expenses">₹{suExpenses.toLocaleString('en-IN')}</div>
+                  </div>
+                  
+                  <div className="breakdown-item total-due">
+                    <div className="breakdown-label">💸 Total Semester Cost</div>
+                    <div className="breakdown-value total-cost">₹{(currentYearFees[gameState.year as keyof typeof currentYearFees] + suExpenses).toLocaleString('en-IN')}</div>
+                  </div>
+                </>
+              )}
+              
+              {gameState.totalDebt > 0 && (
+                <div className="breakdown-item interest">
+                  <div className="breakdown-label">📈 Annual Interest on Debt</div>
+                  <div className="breakdown-value negative">₹{(gameState.totalDebt * 0.12).toLocaleString('en-IN', { maximumFractionDigits: 0 })}</div>
+                </div>
+              )}
+            </div>
+            
+            <div className="affordability-meter">
+              <div className="meter-label">Current Semester Affordability:</div>
+              <div className="meter-bar">
+                <div 
+                  className="meter-fill"
+                  style={{ 
+                    width: `${Math.min(100, (gameState.totalSavings / (currentYearFees[gameState.year as keyof typeof currentYearFees] + suExpenses)) * 100)}%`,
+                    backgroundColor: gameState.totalSavings >= (currentYearFees[gameState.year as keyof typeof currentYearFees] + suExpenses) ? '#4caf50' : '#f44336'
+                  }}
+                ></div>
+              </div>
+              <div className="meter-text">
+                {gameState.totalSavings >= (currentYearFees[gameState.year as keyof typeof currentYearFees] + suExpenses) ? 
+                  '✅ Can afford this semester\'s costs' : 
+                  `❌ Need ₹${((currentYearFees[gameState.year as keyof typeof currentYearFees] + suExpenses) - gameState.totalSavings).toLocaleString('en-IN')} more or loan required`
+                }
               </div>
             </div>
           </div>
@@ -441,8 +599,16 @@ const BitsAffordabilityGame: React.FC = () => {
                     <span className="stat-value">₹{gameState.tuitionPaid.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="stats-row">
+                    <span className="stat-label">Total SU Expenses:</span>
+                    <span className="stat-value">₹{(suExpenses * 8).toLocaleString('en-IN')}</span>
+                  </div>
+                  <div className="stats-row">
+                    <span className="stat-label">Total Educational Cost:</span>
+                    <span className="stat-value">₹{(gameState.tuitionPaid + (suExpenses * 8)).toLocaleString('en-IN')}</span>
+                  </div>
+                  <div className="stats-row">
                     <span className="stat-label">Years Needed to Repay:</span>
-                    <span className="stat-value">{Math.ceil(gameState.totalDebt / (gameState.householdIncome * 0.2))} years</span>
+                    <span className="stat-value">{gameState.totalDebt > 0 ? Math.ceil(gameState.totalDebt / (gameState.householdIncome * 0.2)) : 0} years</span>
                   </div>
                   <div className="stats-row highlight">
                     <span className="stat-label">Debt as % of Annual Income:</span>

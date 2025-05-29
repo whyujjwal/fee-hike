@@ -47,9 +47,9 @@ const DataVisualization: React.FC = () => {
     <section id="data" className="data-section section-padding">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">The Data Tells the Story</h2>
+          <h2 className="section-title">The Data Behind the BT</h2>
           <p className="section-subtitle">
-            Interactive analysis of BITS Pilani fee growth compared to Indian household incomes
+            Interactive analysis of BITS Pilani fee growth - definitely not lite numbers for middle-class families
           </p>
         </div>
 
@@ -59,19 +59,19 @@ const DataVisualization: React.FC = () => {
               className={`chart-tab ${activeChart === 'fees' ? 'active' : ''}`}
               onClick={() => setActiveChart('fees')}
             >
-              Fee vs Income Growth
+              Fee BT vs Income
             </button>
             <button 
               className={`chart-tab ${activeChart === 'affordability' ? 'active' : ''}`}
               onClick={() => setActiveChart('affordability')}
             >
-              Affordability Index
+              Affordability BT Index
             </button>
             <button 
               className={`chart-tab ${activeChart === 'real' ? 'active' : ''}`}
               onClick={() => setActiveChart('real')}
             >
-              Real vs Nominal Fees
+              Real Fee BT (Not Lite!)
             </button>
           </div>
         </div>
@@ -79,7 +79,7 @@ const DataVisualization: React.FC = () => {
         <div className="chart-container">
           {activeChart === 'fees' && (
             <div className="chart-wrapper">
-              <h3 className="chart-title">BITS Tuition vs Median Household Income</h3>
+              <h3 className="chart-title">BITS Fee BT vs Median Household Income (Not So Lite!)</h3>
               <ResponsiveContainer width="100%" height={400}>
                 <ComposedChart data={bitsFeesData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
@@ -105,7 +105,7 @@ const DataVisualization: React.FC = () => {
 
           {activeChart === 'affordability' && (
             <div className="chart-wrapper">
-              <h3 className="chart-title">Affordability Crisis: Fees as % of Income</h3>
+              <h3 className="chart-title">The BT Gets Worse: Fees as % of Income (Definitely Not Lite!)</h3>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={bitsFeesData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
@@ -126,15 +126,15 @@ const DataVisualization: React.FC = () => {
               <div className="affordability-legend">
                 <div className="legend-item">
                   <div className="legend-color" style={{ backgroundColor: '#34a853' }}></div>
-                  <span>Affordable (&lt;30%)</span>
+                  <span>Can Take It Lite (&lt;30%)</span>
                 </div>
                 <div className="legend-item">
                   <div className="legend-color" style={{ backgroundColor: '#fbbc04' }}></div>
-                  <span>Challenging (30-50%)</span>
+                  <span>Mild BT (30-50%)</span>
                 </div>
                 <div className="legend-item">
                   <div className="legend-color" style={{ backgroundColor: '#ea4335' }}></div>
-                  <span>Unaffordable (&gt;50%)</span>
+                  <span>Major BT (&gt;50%)</span>
                 </div>
               </div>
             </div>
@@ -142,7 +142,7 @@ const DataVisualization: React.FC = () => {
 
           {activeChart === 'real' && (
             <div className="chart-wrapper">
-              <h3 className="chart-title">Real vs Nominal Fee Growth (Inflation-Adjusted)</h3>
+              <h3 className="chart-title">Real vs Nominal Fee BT Growth (Inflation-Adjusted - Still Not Lite!)</h3>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={bitsFeesData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
@@ -160,8 +160,8 @@ const DataVisualization: React.FC = () => {
 
         <div className="interactive-simulation">
           <div className="simulation-header">
-            <h3>Your Household Affordability Simulation</h3>
-            <p>Slide to see how BITS fees impact different income levels</p>
+            <h3>Can Your Family Take This Fee BT Lite?</h3>
+            <p>Slide to see if your income level can handle BITS fees (spoiler: probably not lite at all!)</p>
           </div>
           
           <div className="income-slider">

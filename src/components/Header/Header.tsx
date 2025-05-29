@@ -36,7 +36,7 @@ const Header: React.FC = () => {
         <div className="header-content">
           <div className="publication-info">
             <h1 className="publication-name">Fee Hike Investigation</h1>
-            <p className="publication-tagline">Education is NOT Lite • Data-Driven Truth • For Every Family</p>
+            <p className="publication-tagline">Education is NOT Lite • Data-Driven Truth • For Every BITSian Family</p>
           </div>
           <div className="header-meta">
             <time className="publication-date">

@@ -13,13 +13,8 @@ const Footer: React.FC = () => {
             <p>
               This investigation was conducted using publicly available data from 
               BITS Pilani official sources, government statistics, and economic surveys. 
-              Our methodology ensures accuracy and transparency in reporting.
+              The fee BT is real - our methodology ensures you can't take these findings lite.
             </p>
-            <div className="methodology-link">
-              <a href="#methodology" className="footer-link">
-                📊 View Full Methodology
-              </a>
-            </div>
           </div>
 
           <div className="footer-section">
@@ -51,16 +46,6 @@ const Footer: React.FC = () => {
               has been analyzed for accuracy. This investigation is conducted in 
               the public interest and does not represent any institutional affiliation.
             </p>
-            
-            <div className="open-source">
-              <p>
-                <strong>Open Source:</strong> This investigation and its data 
-                are available for public use and verification.
-              </p>
-              <a href="#github-repo" className="footer-link">
-                🔗 Access Raw Data & Code
-              </a>
-            </div>
           </div>
         </div>
 
@@ -84,13 +69,14 @@ const Footer: React.FC = () => {
 
         <div className="footer-cta">
           <div className="final-message">
-            <h4>Education Should Be Accessible, Not Exclusive</h4>
+            <h4>Education Should Be Lite, Not a Financial BT</h4>
             <p>
               Help us continue investigating educational affordability across India. 
-              Together, we can ensure quality education remains within reach of all families.
+              This BT won't get sorted on its own - together, we can ensure quality education 
+              remains within reach of all families, not just those who can afford to take it lite.
             </p>
             <button className="footer-cta-button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              ↑ Back to Top
+              ↑ Back to Top (Get This Sorted!)
             </button>
           </div>
         </div>
