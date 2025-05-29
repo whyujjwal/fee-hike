@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { studentStories, incomeComparison } from '../../data/bitsData';
+import { incomeComparison } from '../../data/bitsData';
 import './StorytellingSection.css';
 
 const StorytellingSection: React.FC = () => {

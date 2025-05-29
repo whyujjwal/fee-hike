@@ -250,47 +250,6 @@ const TimeMachineGame: React.FC = () => {
           </div>
         </div>
 
-        <div className="era-timeline">
-          <h4 className="timeline-title">BITS Fee Evolution by Era</h4>
-          <div className="timeline">
-            <div className={`era-period foundation ${currentYear >= 1998 && currentYear <= 2007 ? 'active' : ''}`}>
-              <div className="era-header">
-                <h5>Foundation Era</h5>
-                <span>1998-2007</span>
-              </div>
-              <div className="era-stats">
-                <div>Starting Fee: ₹15,000</div>
-                <div>Ending Fee: ₹45,000</div>
-                <div>Growth: +200%</div>
-              </div>
-            </div>
-            
-            <div className={`era-period kumar-mangalam ${currentYear >= 2008 && currentYear <= 2017 ? 'active' : ''}`}>
-              <div className="era-header">
-                <h5>Kumar Mangalam Era</h5>
-                <span>2008-2017</span>
-              </div>
-              <div className="era-stats">
-                <div>Starting Fee: ₹80,000</div>
-                <div>Ending Fee: ₹2,50,000</div>
-                <div>Growth: +213%</div>
-              </div>
-            </div>
-            
-            <div className={`era-period krishna-kumar ${currentYear >= 2018 ? 'active' : ''}`}>
-              <div className="era-header">
-                <h5>Krishna Kumar Era</h5>
-                <span>2018-Present</span>
-              </div>
-              <div className="era-stats">
-                <div>Starting Fee: ₹2,85,000</div>
-                <div>Current Fee: ₹6,25,000</div>
-                <div>Growth: +119%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="insights-panel">
           <h4 className="insights-title">Key Insights from the Time Machine</h4>
           <div className="insights-grid">
