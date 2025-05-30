@@ -294,15 +294,19 @@ const BitsAffordabilityGame: React.FC = () => {
             <div className="game-intro-text">
               <p className="lead-paragraph">
                 <span className="dropcap">E</span>very year, thousands of middle-class Indian families 
-                face a serious BT: sacrifice their financial stability to send their children 
-                to premier institutions like BITS Pilani, or watch opportunities slip away.
-                This definitely isn't something you can take lite.
+                face a serious educational affordability crisis.
               </p>
               
-              <p>
-                This interactive simulation puts you in the shoes of these families. Can you navigate 
-                four years of escalating fees, unexpected emergencies, and mounting pressure while 
-                keeping your family afloat? Time to see if you can get this financial BT sorted!
+              <p className="game-description">
+                Across India, middle-class families are confronting an unprecedented educational affordability crisis. 
+                Our investigation reveals that parents must now choose between financial stability and their children's 
+                educational aspirations. This simulation isn't entertainment — it's a serious examination of the 
+                financial pressures facing families today.
+              </p>
+              
+              <p className="game-challenge">
+                Can your family navigate the financial complexities of premium education while 
+                maintaining stability? Experience the impossible choices families face.
               </p>
             </div>
 
@@ -370,34 +374,31 @@ const BitsAffordabilityGame: React.FC = () => {
           </div>
 
           <div className="game-instructions newspaper-box">
-            <h3 className="box-headline">The BT Challenge Ahead</h3>
-            <div className="instructions-grid">
-              <div className="instruction-item">
-                <strong>💰 Manage Finances:</strong> Balance monthly income against living expenses (can't take it lite!)
+            <h3 className="box-headline">The Financial Challenge Ahead</h3>
+            <div className="challenge-grid">
+              <div className="challenge-item">
+                <strong>💰 Manage Finances:</strong> Balance monthly income against living expenses (every rupee counts)
               </div>
-              <div className="instruction-item">
-                <strong>📚 Pay Fees:</strong> Semester fees start at ₹3.16L, increasing {feeIncreasePercentage}% annually (major BT!)
+              <div className="challenge-item">
+                <strong>📚 Pay Fees:</strong> Semester fees start at ₹3.16L, increasing {feeIncreasePercentage}% annually (relentless pressure)
               </div>
-              <div className="instruction-item">
-                <strong>🏫 SU Expenses:</strong> ₹{(suExpenses/1000).toFixed(0)}K additional per semester for activities (not so lite extras)
+              <div className="challenge-item">
+                <strong>🏫 Additional Expenses:</strong> ₹{(suExpenses/1000).toFixed(0)}K additional per semester for activities (hidden costs)
               </div>
-              <div className="instruction-item">
-                <strong>⚡ Handle Crises:</strong> Medical emergencies, job loss, unexpected costs (serious BT moments)
+              <div className="challenge-item">
+                <strong>⚡ Handle Crises:</strong> Medical emergencies, job loss, unexpected costs (when life intervenes)
               </div>
-              <div className="instruction-item">
-                <strong>💳 Consider Loans:</strong> Interest rates will compound your burden (BT gets worse)
+              <div className="challenge-item">
+                <strong>💳 Consider Loans:</strong> Interest rates will compound your burden (debt trap reality)
               </div>
-              <div className="instruction-item">
-                <strong>😰 Watch Stress:</strong> Too much pressure ends the game (can't handle the BT)
+              <div className="challenge-item">
+                <strong>😰 Monitor Stress:</strong> Too much pressure ends the game (breaking point reached)
               </div>
-              <div className="instruction-item">
-                <strong>🎯 The Goal:</strong> Graduate with minimal debt and get this BT sorted
+              <div className="challenge-item">
+                <strong>🎯 The Goal:</strong> Graduate with minimal debt and financial stability
               </div>
-              <div className="instruction-item">
-                <strong>📅 Payment Schedule:</strong> Fees due twice yearly (January & July) - no taking it lite here!
-              </div>
-              <div className="instruction-item">
-                <strong>⏰ Program Duration:</strong> This simulates a 4-year program. For 5-year programs, expect ~25% higher total costs (₹30.6L vs ₹24.48L)
+              <div className="challenge-item">
+                <strong>📅 Payment Schedule:</strong> Fees due twice yearly (January & July) - no flexibility here
               </div>
             </div>
           </div>
@@ -413,11 +414,11 @@ const BitsAffordabilityGame: React.FC = () => {
               }}
               type="button"
             >
-              Begin Your BITS BT Journey
+              Begin Your Educational Finance Journey
             </button>
             
-            <p className="cta-disclaimer">
-              * Based on actual BITS Pilani fee structures and Indian household income data. Not lite at all!
+            <p className="disclaimer">
+              * Based on actual BITS Pilani fee structures and Indian household income data. A sobering reality check.
             </p>
           </div>
         </div>

@@ -34,8 +34,8 @@ const HeroSection: React.FC = () => {
 
         {/* Breaking News Banner */}
         <div className="breaking-news-banner">
-          <span className="breaking-label">BREAKING</span>
-          <span className="breaking-text">MAJOR BT ALERT: BITS Fees Hit ₹3.06L Per Semester - Middle-Class Dreams Under Threat</span>
+          <span className="breaking-label">BREAKING INVESTIGATION</span>
+          <span className="breaking-text">BITS Pilani Fees Reach ₹3.06 Lakh Per Semester - Elite Education's Growing Inequality Crisis</span>
         </div>
 
         {/* Main Newspaper Content */}
@@ -43,14 +43,14 @@ const HeroSection: React.FC = () => {
           <div className="main-story">
             <div className="headline-section">
               <h2 className="main-headline">
-                BITS Fee Crisis Exposed:<br/>
-                <span className="headline-accent">When Education Stops Being "Lite"</span>
+                The Great Education Divide:<br/>
+                <span className="headline-accent">How India's Premier Institute Prices Out the Middle Class</span>
               </h2>
               <div className="subheadline">
-                Investigation reveals 1,400% fee increase since 1998 - The BT middle-class families can't sort
+                Exclusive investigation reveals 1,400% fee escalation since 1998 — A systematic exclusion of middle-income families
               </div>
               <div className="byline">
-                <span className="reporter">By Education Investigation Team</span>
+                <span className="reporter">By The Education Investigation Desk</span>
                 <span className="location">Special Report from Pilani</span>
               </div>
             </div>
@@ -58,23 +58,23 @@ const HeroSection: React.FC = () => {
             <div className="article-columns">
               <div className="column-one">
                 <p className="lead-paragraph">
-                  <span className="dropcap">W</span>HAT STARTED as an affordable dream for middle-class families 
-                  has morphed into a financial nightmare that's anything but "lite." 
+                  <span className="dropcap">W</span>HAT BEGAN as an accessible pathway to excellence for India's aspirational middle class 
+                  has transformed into an insurmountable financial fortress that few can breach.
                 </p>
                 <p>
-                  Our comprehensive investigation reveals that BITS Pilani's semester fees have 
-                  skyrocketed to ₹3,06,000 — a staggering 1,400% increase since 1998 that far 
-                  outpaces inflation and household income growth.
+                  Our comprehensive six-month investigation reveals that BITS Pilani's semester fees have 
+                  escalated to ₹3,06,000 — a devastating 1,400% increase since 1998 that dramatically 
+                  outpaces inflation, household income growth, and economic accessibility.
                 </p>
                 <p>
-                  "This BT won't get sorted easily," says Rajesh Kumar, whose daughter scored 
-                  380 in BITSAT but couldn't afford the fees despite years of savings.
+                  "We saved for fifteen years, dreaming of this moment," reveals Rajesh Kumar, whose daughter scored 
+                  380 in BITSAT but was forced to abandon her admission despite years of meticulous financial planning.
                 </p>
               </div>
 
               <div className="column-two">
                 <div className="info-box crisis">
-                  <h3 className="box-title">THE NUMBERS DON'T LIE</h3>
+                  <h3 className="box-title">THE CRISIS IN NUMBERS</h3>
                   <div className="stat-grid">
                     <div className="stat-item">
                       <span className="stat-number">₹3,06,000</span>
@@ -86,7 +86,7 @@ const HeroSection: React.FC = () => {
                     </div>
                     <div className="stat-item">
                       <span className="stat-number">68%</span>
-                      <span className="stat-label">Families Need Loans</span>
+                      <span className="stat-label">Families Require Loans</span>
                     </div>
                     <div className="stat-item">
                       <span className="stat-number">₹24.48L</span>
@@ -98,7 +98,7 @@ const HeroSection: React.FC = () => {
                     </div>
                   </div>
                   <div className="crisis-note">
-                    <strong>Reality Check:</strong> Not lite at all for middle-class families
+                    <strong>Critical Impact:</strong> Systematic exclusion of middle-income families from premium education
                   </div>
                 </div>
               </div>
@@ -108,25 +108,25 @@ const HeroSection: React.FC = () => {
           {/* Sidebar News */}
           <div className="sidebar-news">
             <div className="sidebar-section">
-              <h4 className="sidebar-title">Also in Today's Edition</h4>
+              <h4 className="sidebar-title">Inside This Investigation</h4>
               <div className="sidebar-item">
-                <h5>Interactive Simulation</h5>
-                <p>Test if your family can handle the BITS fee BT</p>
+                <h5>Financial Impact Simulator</h5>
+                <p>Calculate the true burden of premium education costs on Indian households</p>
               </div>
               <div className="sidebar-item">
-                <h5>Data Analysis</h5>
-                <p>Complete breakdown of fee growth vs income trends</p>
+                <h5>Comprehensive Data Analysis</h5>
+                <p>Detailed examination of fee inflation versus national income trends</p>
               </div>
               <div className="sidebar-item">
-                <h5>Real Stories</h5>
-                <p>How families cope when education isn't lite anymore</p>
+                <h5>Human Stories</h5>
+                <p>Exclusive interviews with families navigating the education affordability crisis</p>
               </div>
             </div>
 
             <div className="advertisement-space">
               <div className="ad-placeholder">
                 <span>Educational Equality</span>
-                <small>A fundamental right, not a privilege</small>
+                <small>A constitutional promise under threat</small>
               </div>
             </div>
           </div>

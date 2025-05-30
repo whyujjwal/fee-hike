@@ -4,7 +4,7 @@ import { bitsFeesData, keyMilestones } from '../../data/bitsData';
 import './DataVisualization.css';
 
 const DataVisualization: React.FC = () => {
-  const [activeChart, setActiveChart] = useState<'fees' | 'affordability' | 'real'>('fees');
+  const [activeChart, setActiveChart] = useState<'feeVsIncome' | 'affordability' | 'realGrowth'>('feeVsIncome');
   const [incomeSlider, setIncomeSlider] = useState(500000);
 
   const formatCurrency = (value: number) => `₹${(value / 1000).toFixed(0)}K`;
@@ -46,40 +46,36 @@ const DataVisualization: React.FC = () => {
   return (
     <section id="data" className="data-section section-padding">
       <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">The Data Behind the BT</h2>
-          <p className="section-subtitle">
-            Interactive analysis of BITS Pilani fee growth - definitely not lite numbers for middle-class families
-          </p>
-        </div>
+        <h2 className="section-title">The Financial Reality Exposed</h2>
+        <p className="section-subtitle">
+          Comprehensive analysis of BITS Pilani fee escalation — devastating numbers for middle-class families
+        </p>
 
-        <div className="chart-controls">
-          <div className="chart-tabs">
-            <button 
-              className={`chart-tab ${activeChart === 'fees' ? 'active' : ''}`}
-              onClick={() => setActiveChart('fees')}
-            >
-              Fee BT vs Income
-            </button>
-            <button 
-              className={`chart-tab ${activeChart === 'affordability' ? 'active' : ''}`}
-              onClick={() => setActiveChart('affordability')}
-            >
-              Affordability BT Index
-            </button>
-            <button 
-              className={`chart-tab ${activeChart === 'real' ? 'active' : ''}`}
-              onClick={() => setActiveChart('real')}
-            >
-              Real Fee BT (Not Lite!)
-            </button>
-          </div>
+        <div className="chart-navigation">
+          <button 
+            className={`chart-nav-btn ${activeChart === 'feeVsIncome' ? 'active' : ''}`}
+            onClick={() => setActiveChart('feeVsIncome')}
+          >
+            Fee Growth vs Income
+          </button>
+          <button 
+            className={`chart-nav-btn ${activeChart === 'affordability' ? 'active' : ''}`}
+            onClick={() => setActiveChart('affordability')}
+          >
+            Affordability Crisis Index
+          </button>
+          <button 
+            className={`chart-nav-btn ${activeChart === 'realGrowth' ? 'active' : ''}`}
+            onClick={() => setActiveChart('realGrowth')}
+          >
+            Real Fee Growth Analysis
+          </button>
         </div>
 
         <div className="chart-container">
-          {activeChart === 'fees' && (
+          {activeChart === 'feeVsIncome' && (
             <div className="chart-wrapper">
-              <h3 className="chart-title">BITS Fee BT vs Median Household Income (Not So Lite!)</h3>
+              <h3 className="chart-title">BITS Fee Escalation vs Median Household Income (The Growing Divide)</h3>
               <ResponsiveContainer width="100%" height={400}>
                 <ComposedChart data={bitsFeesData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
@@ -105,7 +101,7 @@ const DataVisualization: React.FC = () => {
 
           {activeChart === 'affordability' && (
             <div className="chart-wrapper">
-              <h3 className="chart-title">The BT Gets Worse: Fees as % of Income (Definitely Not Lite!)</h3>
+              <h3 className="chart-title">The Affordability Crisis: Fees as Percentage of Income (Deepening Inequality)</h3>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={bitsFeesData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
@@ -123,26 +119,26 @@ const DataVisualization: React.FC = () => {
                   />
                 </LineChart>
               </ResponsiveContainer>
-              <div className="affordability-legend">
+              <div className="legend">
                 <div className="legend-item">
-                  <div className="legend-color" style={{ backgroundColor: '#34a853' }}></div>
-                  <span>Can Take It Lite (&lt;30%)</span>
+                  <div className="legend-color affordable"></div>
+                  <span>Manageable (&lt;30%)</span>
                 </div>
                 <div className="legend-item">
-                  <div className="legend-color" style={{ backgroundColor: '#fbbc04' }}></div>
-                  <span>Mild BT (30-50%)</span>
+                  <div className="legend-color difficult"></div>
+                  <span>Difficult (30-50%)</span>
                 </div>
                 <div className="legend-item">
-                  <div className="legend-color" style={{ backgroundColor: '#ea4335' }}></div>
-                  <span>Major BT (&gt;50%)</span>
+                  <div className="legend-color impossible"></div>
+                  <span>Prohibitive (&gt;50%)</span>
                 </div>
               </div>
             </div>
           )}
 
-          {activeChart === 'real' && (
+          {activeChart === 'realGrowth' && (
             <div className="chart-wrapper">
-              <h3 className="chart-title">Real vs Nominal Fee BT Growth (Inflation-Adjusted - Still Not Lite!)</h3>
+              <h3 className="chart-title">Real vs Nominal Fee Growth (Inflation-Adjusted Analysis)</h3>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={bitsFeesData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
@@ -158,11 +154,9 @@ const DataVisualization: React.FC = () => {
           )}
         </div>
 
-        <div className="interactive-simulation">
-          <div className="simulation-header">
-            <h3>Can Your Family Take This Fee BT Lite?</h3>
-            <p>Slide to see if your income level can handle BITS fees (spoiler: probably not lite at all!)</p>
-          </div>
+        <div className="income-simulator">
+          <h3>Financial Impact Assessment Tool</h3>
+          <p>Adjust household income to assess the true burden of BITS fees on Indian families</p>
           
           <div className="income-slider">
             <label htmlFor="income-range">Annual Household Income: ₹{incomeSlider.toLocaleString('en-IN')}</label>

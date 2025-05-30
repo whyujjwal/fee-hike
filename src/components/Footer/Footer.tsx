@@ -47,6 +47,14 @@ const Footer: React.FC = () => {
               the public interest and does not represent any institutional affiliation.
             </p>
           </div>
+
+          <div className="footer-mission">
+            <h3>Our Mission</h3>
+            <p>
+              Transparency through data-driven investigation. Our comprehensive analysis exposes the growing 
+              educational inequality crisis - rigorous methodology ensures these findings cannot be dismissed.
+            </p>
+          </div>
         </div>
 
         <div className="footer-divider"></div>
@@ -69,11 +77,10 @@ const Footer: React.FC = () => {
 
         <div className="footer-cta">
           <div className="final-message">
-            <h4>Education Should Be Lite, Not a Financial BT</h4>
+            <h4>Education Should Be Accessible, Not a Financial Burden</h4>
             <p>
-              Help us continue investigating educational affordability across India. 
-              This BT won't get sorted on its own - together, we can ensure quality education 
-              remains within reach of all families, not just those who can afford to take it lite.
+              This inequality crisis requires collective action - together, we can ensure quality education
+              remains within reach of all families, not just those with substantial financial resources.
             </p>
             <button className="footer-cta-button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               ↑ Back to Top (Get This Sorted!)
