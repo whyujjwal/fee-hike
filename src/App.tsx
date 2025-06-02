@@ -8,6 +8,7 @@ import BitsAffordabilityGame from './components/BitsAffordabilityGame/BitsAfford
 import TimeMachineGame from './components/TimeMachineGame/TimeMachineGame';
 import Developers from './components/Developers/Developers';
 import PetitionPopup from './components/PetitionPopup/PetitionPopup';
+import { Analytics } from '@vercel/analytics/react';
 // import CallToAction from './components/CallToAction/CallToAction';
 import Footer from './components/Footer/Footer';
 
@@ -24,6 +25,7 @@ function App() {
       <Footer />
       <Developers />
       <PetitionPopup />
+      <Analytics />
     </div>
   );
 }
