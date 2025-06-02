@@ -1,0 +1,109 @@
+.developers-section {
+  padding: 20px 0;
+  background-color: var(--newspaper-white);
+  margin-top: 40px;
+}
+
+.developers-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.petition-link {
+  margin-bottom: 24px;
+}
+
+.petition-button {
+  display: inline-block;
+  font-family: var(--font-headline);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--newspaper-white);
+  background-color: var(--newspaper-black);
+  text-decoration: none;
+  padding: 16px 32px;
+  border: var(--border-thick) solid var(--newspaper-black);
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 0 var(--newspaper-black);
+}
+
+.petition-button:hover {
+  background-color: var(--newspaper-white);
+  color: var(--newspaper-black);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--newspaper-black);
+}
+
+.developed-by {
+  font-family: var(--font-caption);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--newspaper-dark-gray);
+  margin: 16px 0 8px;
+}
+
+.developer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.developer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.developer-link {
+  font-family: var(--font-headline);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--newspaper-black);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.developer-link:hover {
+  text-decoration: underline;
+}
+
+.developer-role {
+  font-family: var(--font-caption);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--newspaper-dark-gray);
+}
+
+.separator {
+  font-family: var(--font-caption);
+  font-size: 14px;
+  color: var(--newspaper-dark-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .developers-section {
+    padding: 16px 0;
+  }
+  
+  .petition-button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+  
+  .developer-link {
+    font-size: 12px;
+  }
+  
+  .developer-role {
+    font-size: 9px;
+  }
+} 

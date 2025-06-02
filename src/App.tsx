@@ -6,6 +6,7 @@ import DataVisualization from './components/DataVisualization/DataVisualization'
 import StorytellingSection from './components/StorytellingSection/StorytellingSection';
 import BitsAffordabilityGame from './components/BitsAffordabilityGame/BitsAffordabilityGame';
 import TimeMachineGame from './components/TimeMachineGame/TimeMachineGame';
+import Developers from './components/Developers/Developers';
 // import CallToAction from './components/CallToAction/CallToAction';
 import Footer from './components/Footer/Footer';
 
@@ -20,6 +21,7 @@ function App() {
       <TimeMachineGame />
       {/* <CallToAction /> */}
       <Footer />
+      <Developers />
     </div>
   );
 }

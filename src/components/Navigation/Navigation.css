@@ -1,17 +1,23 @@
 .navigation {
-  background-color: var(--newspaper-light-gray);
-  border-bottom: 1px solid var(--newspaper-gray);
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 90;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  left: 0;
+  right: 0;
+  background-color: var(--newspaper-white);
+  border-bottom: var(--border-width) solid var(--newspaper-black);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navigation.scrolled {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-sm) 0;
+  padding: 12px 0;
 }
 
 .investigation-title {
@@ -41,36 +47,65 @@
 
 .nav-links {
   display: flex;
+  gap: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: var(--spacing-md);
 }
 
 .nav-link {
+  font-family: var(--font-headline);
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--newspaper-black);
   background: none;
   border: none;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--newspaper-gray);
+  padding: 8px 0;
   cursor: pointer;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: 4px;
+  position: relative;
   transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--newspaper-black);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.petition-button {
+  display: inline-block;
+  font-family: var(--font-headline);
+  font-size: 14px;
+  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  color: var(--newspaper-white);
+  background-color: var(--newspaper-black);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: var(--border-width) solid var(--newspaper-black);
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 0 var(--newspaper-black);
+  white-space: nowrap;
 }
 
-.nav-link:hover {
-  color: var(--accent-maroon);
-  background-color: rgba(139, 21, 56, 0.1);
-}
-
-.nav-link.active {
-  color: var(--accent-maroon);
-  background-color: rgba(139, 21, 56, 0.15);
-  font-weight: 700;
+.petition-button:hover {
+  background-color: var(--newspaper-white);
+  color: var(--newspaper-black);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--newspaper-black);
 }
 
 /* Progress indicator */
@@ -87,13 +122,20 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .navigation {
+    position: relative;
+  }
+
   .nav-content {
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 16px;
+    padding: 16px 0;
   }
   
   .investigation-title {
     text-align: center;
+    flex-direction: column;
+    gap: 8px;
   }
   
   .investigation-title h2 {
@@ -101,13 +143,20 @@
   }
   
   .nav-links {
-    gap: var(--spacing-sm);
     flex-wrap: wrap;
     justify-content: center;
+    gap: 12px;
+    padding: 0 16px;
   }
   
   .nav-link {
-    font-size: 0.8rem;
-    padding: var(--spacing-xs);
+    font-size: 12px;
+    padding: 6px 0;
+  }
+  
+  .petition-button {
+    font-size: 12px;
+    padding: 6px 12px;
+    margin: 8px 0;
   }
 } 

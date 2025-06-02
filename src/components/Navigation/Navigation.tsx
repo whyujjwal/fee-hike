@@ -3,6 +3,7 @@ import './Navigation.css';
 
 const Navigation: React.FC = () => {
   const [activeSection, setActiveSection] = useState('hero');
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const sections = useMemo(() => [
     { id: 'hero', label: 'The Story' },
@@ -14,6 +15,7 @@ const Navigation: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
       const scrollPosition = window.scrollY + 100;
       
       sections.forEach(section => {
@@ -36,12 +38,19 @@ const Navigation: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const navHeight = 60; // Approximate height of the navigation bar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
-    <nav className="navigation">
+    <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="nav-content">
           <div className="investigation-title">
@@ -60,6 +69,14 @@ const Navigation: React.FC = () => {
               </li>
             ))}
           </ul>
+          <a 
+            href="https://chng.it/sf7Y7rCgfD" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="petition-button"
+          >
+            Sign the Petition
+          </a>
         </div>
       </div>
     </nav>
