@@ -18,7 +18,6 @@ const Developers = () => {
               >
                 Sujal Mittal
               </a>
-              <span className="developer-role">Lead Developer</span>
             </div>
             <span className="separator">&</span>
             <a 
