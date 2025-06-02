@@ -1,0 +1,156 @@
+.petition-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.petition-popup {
+  background-color: var(--newspaper-white);
+  border: var(--border-thick) solid var(--newspaper-black);
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 8px 8px 0 var(--newspaper-black);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--newspaper-black);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  transform: scale(1.1);
+}
+
+.popup-content {
+  padding: 32px;
+  text-align: center;
+}
+
+.popup-content h2 {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.popup-text {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 20px 0;
+  text-align: justify;
+}
+
+.popup-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 24px 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-number {
+  font-family: var(--font-headline);
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--newspaper-black);
+}
+
+.stat-label {
+  font-family: var(--font-caption);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--newspaper-dark-gray);
+}
+
+.popup-petition-button {
+  display: inline-block;
+  font-family: var(--font-headline);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--newspaper-white);
+  background-color: var(--newspaper-black);
+  text-decoration: none;
+  padding: 16px 32px;
+  border: var(--border-thick) solid var(--newspaper-black);
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 0 var(--newspaper-black);
+  margin-top: 16px;
+}
+
+.popup-petition-button:hover {
+  background-color: var(--newspaper-white);
+  color: var(--newspaper-black);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--newspaper-black);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .petition-popup {
+    max-width: 100%;
+  }
+
+  .popup-content {
+    padding: 24px;
+  }
+
+  .popup-content h2 {
+    font-size: 20px;
+  }
+
+  .popup-text {
+    font-size: 14px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  .popup-petition-button {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+} 

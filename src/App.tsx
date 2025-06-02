@@ -7,6 +7,7 @@ import StorytellingSection from './components/StorytellingSection/StorytellingSe
 import BitsAffordabilityGame from './components/BitsAffordabilityGame/BitsAffordabilityGame';
 import TimeMachineGame from './components/TimeMachineGame/TimeMachineGame';
 import Developers from './components/Developers/Developers';
+import PetitionPopup from './components/PetitionPopup/PetitionPopup';
 // import CallToAction from './components/CallToAction/CallToAction';
 import Footer from './components/Footer/Footer';
 
@@ -22,6 +23,7 @@ function App() {
       {/* <CallToAction /> */}
       <Footer />
       <Developers />
+      <PetitionPopup />
     </div>
   );
 }
