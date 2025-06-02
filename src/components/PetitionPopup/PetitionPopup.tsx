@@ -36,8 +36,8 @@ const PetitionPopup: React.FC = () => {
               <span className="stat-label">Students Affected</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">50%</span>
-              <span className="stat-label">Fee Increase</span>
+              <span className="stat-number">58%</span>
+              <span className="stat-label">Hostel Fee Hike</span>
             </div>
           </div>
           <a 
